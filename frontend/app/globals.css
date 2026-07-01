@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-neon: var(--neon);
+  --color-neon-hi: var(--neon-hi);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-red: var(--red);
+  
+  --font-display: var(--font-display), sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+@layer base {
+  :root {
+    --ink: #0A0A0F;
+    --surface: #17171F;
+    --line: #2A2A36;
+    --neon: #9B4DFF;
+    --neon-hi: #C77DFF;
+    --paper: #F4F4EE;
+    --muted: #6A6A78;
+    --red: #FF3B6B;
+  }
+  
+  html, body {
+    background-color: var(--ink);
+    color: var(--paper);
+    margin: 0;
+  }
+}
