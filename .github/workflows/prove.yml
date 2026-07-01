@@ -32,7 +32,11 @@ jobs:
           SECRET_HEX: "${{ inputs.secret_hex }}"
           TARGET_HEX: "${{ inputs.target_hex }}"
           SELECTOR_HEX: "${{ inputs.selector_hex }}"
-        run: cd contracts/creator-badge && cargo run -p host --bin fixture --release
+        run: |
+          export PATH="$HOME/.risc0/bin:$PATH"
+          ls -la $HOME/.risc0/toolchains/ || echo "no toolchains"
+          cargo risczero --version
+          cd contracts/creator-badge && cargo run -p host --bin fixture --release
       - uses: actions/upload-artifact@v4
         with: 
           name: fixture
