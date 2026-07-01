@@ -44,7 +44,7 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="bg-ink text-paper h-screen w-screen overflow-hidden flex flex-col font-sans antialiased">
+    <div className="bg-ink text-paper min-h-screen w-full flex flex-col font-sans antialiased">
       {/* Header */}
       <header className="h-[56px] border-b-2 border-line flex justify-between items-center px-6 flex-shrink-0 z-50 bg-ink">
         <div className="font-display font-bold tracking-tighter text-xl">PROVA*</div>
@@ -54,9 +54,9 @@ export default function DemoPage() {
       </header>
 
       {/* Main 3-Column Layout */}
-      <main className="flex-1 flex overflow-hidden relative">
+      <main className="flex-1 flex flex-col md:flex-row relative">
         {/* LEFT ZONE (§ PRIVATE) */}
-        <section className="w-full md:w-[45%] h-full bg-paper border-r-2 border-line p-8 flex flex-col relative">
+        <section className="w-full md:w-[45%] bg-paper border-b-2 md:border-b-0 md:border-r-2 border-line p-8 flex flex-col relative">
           <div className="font-mono text-muted mb-12 flex items-center gap-2 font-bold uppercase">
             <span className="text-neon">§</span> PRIVATE
           </div>
@@ -92,7 +92,7 @@ export default function DemoPage() {
         </section>
 
         {/* CENTER ZONE (THE WALL) */}
-        <section className="hidden md:flex w-[10%] h-full border-r-2 border-line flex-col items-center justify-center relative bg-ink">
+        <section className="hidden md:flex w-[10%] border-r-2 border-line flex-col items-center justify-center relative bg-ink min-h-[500px]">
           <div className="absolute inset-y-0 w-1 bg-neon left-1/2 -translate-x-1/2 shadow-[0_0_20px_0_var(--neon)]"></div>
           <div className="writing-vertical font-mono text-sm font-bold text-neon bg-ink py-4 z-10 tracking-widest uppercase rotate-180" style={{ writingMode: 'vertical-rl' }}>
             THE DIAGNOSIS NEVER CROSSES THIS LINE
@@ -100,7 +100,7 @@ export default function DemoPage() {
         </section>
 
         {/* RIGHT ZONE (§ PUBLIC) */}
-        <section className="w-full md:w-[45%] h-full p-8 flex flex-col relative bg-ink text-paper">
+        <section className="w-full md:w-[45%] p-8 flex flex-col relative bg-ink text-paper min-h-[600px]">
           <div className="font-mono text-muted mb-12 flex items-center gap-2 font-bold uppercase">
             <span className="text-neon">§</span> PUBLIC
           </div>
