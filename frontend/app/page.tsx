@@ -4,6 +4,10 @@ import { Navbar } from '@/components/landing/Navbar';
 import { HeroText } from '@/components/landing/HeroText';
 import { HeroCTA } from '@/components/landing/HeroCTA';
 import { HeroTerminal } from '@/components/landing/HeroTerminal';
+import { Ticker } from '@/components/landing/Ticker';
+import { ProtocolWithoutZK } from '@/components/landing/ProtocolWithoutZK';
+import { ProtocolWithProva } from '@/components/landing/ProtocolWithProva';
+
 export default function LandingPage() {
   return (
     <>
@@ -34,59 +38,13 @@ function Hero() {
   );
 }
 
-function Ticker() {
-  return (
-    <div className="font-mono font-bold text-lg uppercase text-ink py-4 border-b-2 border-line overflow-hidden whitespace-nowrap bg-neon flex items-center gap-8">
-      <div className="flex animate-[marquee_20s_linear_infinite] gap-8">
-        <span className="text-white bg-ink px-2 py-1">STATUS: LIVE ON TESTNET</span>
-        <span className="text-ink font-black text-2xl">/</span>
-        <span className="text-ink">SOULBOUND</span>
-        <span className="text-ink font-black text-2xl">/</span>
-        <span className="text-ink">NON-TRANSFERABLE</span>
-        <span className="text-ink font-black text-2xl">/</span>
-        <span className="text-white bg-ink px-2 py-1">STATUS: LIVE ON TESTNET</span>
-        <span className="text-ink font-black text-2xl">/</span>
-        <span className="text-ink">SOULBOUND</span>
-        <span className="text-ink font-black text-2xl">/</span>
-        <span className="text-ink">NON-TRANSFERABLE</span>
-      </div>
-    </div>
-  );
-}
-
 function Problem() {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 relative min-h-screen">
-      <div className="p-8 md:p-16 lg:border-r-2 border-line bg-paper relative overflow-hidden group">
-        <div className="relative z-10">
-          <div className="font-mono font-bold text-ink uppercase mb-8 border-b-4 border-ink inline-block pb-1 text-xl bg-paper px-2">§02 — PROTOCOL</div>
-          <h2 className="font-display text-6xl md:text-8xl mb-12 text-red uppercase tracking-tighter">WITHOUT<br/>ZK</h2>
-          <div className="border-2 border-ink bg-paper shadow-[12px_12px_0px_var(--ink)] relative z-20 max-w-lg transform -rotate-1 group-hover:rotate-0 transition-transform">
-            <div className="bg-paper p-6 m-2 border-2 border-ink relative">
-              <div className="absolute -top-4 -right-4 bg-red text-white font-mono font-bold text-sm px-3 py-2 border-2 border-ink shadow-[4px_4px_0px_var(--ink)] transform rotate-3">
-                VULNERABLE
-              </div>
-              <div className="space-y-6 font-mono text-ink text-base mt-4">
-                <div className="flex justify-between items-end border-b-2 border-ink/20 pb-2">
-                  <span className="font-bold">NAME:</span>
-                  <span className="bg-ink text-paper px-2 py-1">JANE DOE██</span>
-                </div>
-                <div className="flex justify-between items-end border-b-2 border-red pb-2 bg-red/10 -mx-2 px-2 pt-2">
-                  <span className="text-red font-bold">DIAGNOSIS:</span>
-                  <span className="text-red font-bold bg-paper px-1">EXPOSED_MEDICAL_DATA</span>
-                </div>
-                <div className="flex justify-between items-end border-b-2 border-ink/20 pb-2">
-                  <span className="font-bold">ID:</span>
-                  <span className="bg-ink text-paper px-2 py-1">492-XXX-██</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ProtocolWithoutZK />
       <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-8 flex-col items-center justify-center z-30 pointer-events-none">
         <div className="h-full w-2 bg-neon border-x-2 border-ink"></div>
-        <div className="absolute bg-neon text-ink py-6 px-3 font-mono font-bold text-sm tracking-widest writing-vertical-rl rotate-180 border-4 border-ink shadow-[8px_8px_0px_var(--ink)] whitespace-nowrap uppercase">
+        <div className="absolute bg-neon text-ink py-6 px-3 font-mono font-bold text-sm tracking-widest writing-vertical-rl border-4 border-ink shadow-[8px_8px_0px_var(--ink)] whitespace-nowrap uppercase">
           THE DIAGNOSIS NEVER CROSSES THIS LINE
         </div>
       </div>
@@ -95,30 +53,7 @@ function Problem() {
           THE DIAGNOSIS NEVER CROSSES THIS LINE
         </div>
       </div>
-      <div className="p-8 md:p-16 bg-ink relative overflow-hidden">
-        <div className="absolute inset-0 bg-ink/90 z-0"></div>
-        <div className="relative z-10 h-full flex flex-col justify-between">
-          <div>
-            <div className="flex justify-end mb-8">
-              <div className="font-mono font-bold text-ink bg-neon uppercase px-3 py-1 border-2 border-ink shadow-[4px_4px_0px_var(--neon)] text-xl">SECURE STATE</div>
-            </div>
-            <h2 className="font-display text-6xl md:text-8xl mb-12 text-white uppercase tracking-tighter text-right">WITH<br/><span className="text-neon">PROVA</span></h2>
-          </div>
-          <div className="border-4 border-neon bg-ink p-6 relative shadow-[12px_12px_0px_var(--neon)] self-end max-w-lg w-full transform rotate-1 hover:rotate-0 transition-transform">
-            <div className="absolute -top-6 -right-6 bg-neon border-4 border-ink rounded-full p-2 w-16 h-16 flex items-center justify-center shadow-[4px_4px_0px_var(--ink)]">
-              <span className="text-ink text-4xl font-bold">✓</span>
-            </div>
-            <div className="font-mono font-bold text-neon mb-6 border-b-2 border-neon/30 pb-3 text-lg">ZK_PROOF_VERIFIED</div>
-            <pre className="font-mono text-sm text-paper bg-surface p-6 border-2 border-line overflow-x-auto text-base">
-{`{
-  "eligible": true,
-  "nullifier": "0x8f2a...9b1c",
-  "target": "stellar_contract_v1"
-}`}
-            </pre>
-          </div>
-        </div>
-      </div>
+      <ProtocolWithProva />
     </section>
   );
 }

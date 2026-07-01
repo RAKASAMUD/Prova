@@ -94,7 +94,7 @@ export default function DemoPage() {
         {/* CENTER ZONE (THE WALL) */}
         <section className="hidden md:flex w-[10%] border-r-2 border-line flex-col items-center justify-center relative bg-ink min-h-[500px]">
           <div className="absolute inset-y-0 w-1 bg-neon left-1/2 -translate-x-1/2 shadow-[0_0_20px_0_var(--neon)]"></div>
-          <div className="writing-vertical font-mono text-sm font-bold text-neon bg-ink py-4 z-10 tracking-widest uppercase rotate-180" style={{ writingMode: 'vertical-rl' }}>
+          <div className="writing-vertical font-mono text-sm font-bold text-neon bg-ink py-4 z-10 tracking-widest uppercase" style={{ writingMode: 'vertical-rl' }}>
             THE DIAGNOSIS NEVER CROSSES THIS LINE
           </div>
         </section>

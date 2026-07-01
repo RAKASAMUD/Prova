@@ -1,0 +1,28 @@
+export function ProtocolWithProva() {
+  return (
+    <div className="p-8 md:p-16 bg-ink relative overflow-hidden h-full">
+      <div className="absolute inset-0 bg-ink/90 z-0"></div>
+      <div className="relative z-10 h-full flex flex-col justify-between">
+        <div>
+          <div className="flex justify-end mb-8">
+            <div className="font-mono font-bold text-ink bg-neon uppercase px-3 py-1 border-2 border-ink shadow-[4px_4px_0px_var(--neon)] text-xl">SECURE STATE</div>
+          </div>
+          <h2 className="font-display text-6xl md:text-8xl mb-12 text-white uppercase tracking-tighter text-right">WITH<br/><span className="text-neon">PROVA</span></h2>
+        </div>
+        <div className="border-4 border-neon bg-ink p-6 relative shadow-[12px_12px_0px_var(--neon)] self-end max-w-lg w-full transform rotate-1 hover:rotate-0 transition-transform">
+          <div className="absolute -top-6 -right-6 bg-neon border-4 border-ink rounded-full p-2 w-16 h-16 flex items-center justify-center shadow-[4px_4px_0px_var(--ink)]">
+            <span className="text-ink text-4xl font-bold">✓</span>
+          </div>
+          <div className="font-mono font-bold text-neon mb-6 border-b-2 border-neon/30 pb-3 text-lg">ZK_PROOF_VERIFIED</div>
+          <pre className="font-mono text-sm text-paper bg-surface p-6 border-2 border-line overflow-x-auto text-base">
+{`{
+  "eligible": true,
+  "nullifier": "0x8f2a...9b1c",
+  "target": "stellar_contract_v1"
+}`}
+          </pre>
+        </div>
+      </div>
+    </div>
+  );
+}
