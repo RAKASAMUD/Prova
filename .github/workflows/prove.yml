@@ -22,8 +22,8 @@ jobs:
         run: |
           curl -L https://risczero.com/install | bash
           echo "$HOME/.risc0/bin" >> $GITHUB_PATH
-          $HOME/.risc0/bin/rzup install rust
           $HOME/.risc0/bin/rzup install cargo-risczero 3.0.5
+          $HOME/.risc0/bin/cargo-risczero toolchain install
       - name: prove
         env: 
           RISC0_USE_DOCKER: "1"
