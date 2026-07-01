@@ -1,0 +1,46 @@
+import hashlib
+import sys
+import base64
+
+if len(sys.argv) < 2:
+    print("Usage: python3 generate_m2_params.py <CONTRACT_ID>")
+    sys.exit(1)
+
+contract_id = sys.argv[1]
+try:
+    pad = '=' * ((8 - (len(contract_id) % 8)) % 8)
+    decoded = base64.b32decode(contract_id + pad)
+    self_hex = decoded[1:-2].hex()
+except Exception as e:
+    print(f"Error decoding CONTRACT_ID: {e}")
+    sys.exit(1)
+
+img_hex = "01" * 32
+
+secret = bytes([7] * 32)
+commit_hex = hashlib.sha256(secret).hexdigest()
+
+nullifier = bytes([8] * 32)
+target_bytes = bytes.fromhex(self_hex)
+journal_bytes = bytes([1]) + bytes.fromhex(commit_hex) + nullifier + target_bytes
+journal_hex = journal_bytes.hex()
+journal_hash_bytes = hashlib.sha256(journal_bytes).digest()
+
+TAG_OUTPUT = bytes([0x77, 0xea, 0xfe, 0xb3, 0x66, 0xa7, 0x8b, 0x47, 0x74, 0x7d, 0xe0, 0xd7, 0xbb, 0x17, 0x62, 0x84, 0x08, 0x5f, 0xf5, 0x56, 0x48, 0x87, 0x00, 0x9a, 0x5b, 0xe6, 0x3d, 0xa3, 0x2d, 0x35, 0x59, 0xd4])
+output_data = TAG_OUTPUT + journal_hash_bytes + bytes(32) + bytes([0x02, 0x00])
+output_digest = hashlib.sha256(output_data).digest()
+
+TAG_CLAIM = bytes([0xcb, 0x1f, 0xef, 0xcd, 0x1f, 0x2d, 0x9a, 0x64, 0x97, 0x5c, 0xbb, 0xbf, 0x6e, 0x16, 0x1e, 0x29, 0x14, 0x43, 0x4b, 0x0c, 0xbb, 0x99, 0x60, 0xb8, 0x4d, 0xf5, 0xd7, 0x17, 0xe8, 0x6b, 0x48, 0xaf])
+POST_STATE = bytes([0xa3, 0xac, 0xc2, 0x71, 0x17, 0x41, 0x89, 0x96, 0x34, 0x0b, 0x84, 0xe5, 0xa9, 0x0f, 0x3e, 0xf4, 0xc4, 0x9d, 0x22, 0xc7, 0x9e, 0x44, 0xaa, 0xd8, 0x22, 0xec, 0x9c, 0x31, 0x3e, 0x1e, 0xb8, 0xe2])
+
+claim_data = TAG_CLAIM + bytes(32) + bytes.fromhex(img_hex) + POST_STATE + output_digest + bytes([0, 0, 0, 0]) + bytes([0, 0, 0, 0]) + bytes([0x04, 0x00])
+claim_digest = hashlib.sha256(claim_data).digest()
+
+seal_hex = "00000000" + claim_digest.hex()
+
+print("==== SALIN NILAI BERIKUT UNTUK LANGKAH E & F ====")
+print(f"img_hex     = {img_hex}")
+print(f"self_hex    = {self_hex}")
+print(f"commit_hex  = {commit_hex}")
+print(f"journal_hex = {journal_hex}")
+print(f"seal_hex    = {seal_hex}")
