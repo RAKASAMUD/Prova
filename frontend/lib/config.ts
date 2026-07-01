@@ -5,7 +5,7 @@ export const config = {
   sampleAddr: process.env.NEXT_PUBLIC_SAMPLE_ADDR || "",
   
   // Simulation mock data for double-claim
-  reclaimCaller: process.env.RECLAIM_CALLER || "",
-  reclaimSealHex: process.env.RECLAIM_SEAL_HEX || "",
-  reclaimJournalHex: process.env.RECLAIM_JOURNAL_HEX || "",
+  reclaimCaller: process.env.NEXT_PUBLIC_RECLAIM_CALLER || "",
+  reclaimSealHex: process.env.NEXT_PUBLIC_RECLAIM_SEAL_HEX || "",
+  reclaimJournalHex: process.env.NEXT_PUBLIC_RECLAIM_JOURNAL_HEX || "",
 };
