@@ -1,5 +1,5 @@
 use risc0_zkvm::{default_prover, compute_image_id, ExecutorEnv, ProverOpts};
-use methods::CREATOR_BADGE_GUEST_ELF as ELF;
+use methods::METHOD_ELF as ELF;
 use std::fs;
 
 fn h(s: &str) -> [u8; 32] {
