@@ -1,0 +1,36 @@
+name: prove
+on: 
+  workflow_dispatch: 
+    inputs: 
+      secret_hex: 
+        description: "32-byte secret hex"
+        required: true
+      target_hex: 
+        description: "32-byte target hex (contract id)"
+        required: true
+      selector_hex:
+        description: "4-byte selector hex"
+        required: true
+jobs:
+  groth16:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: swap 8G
+        run: sudo fallocate -l 8G /swap2 && sudo chmod 600 /swap2 && sudo mkswap /swap2 && sudo swapon /swap2 && free -h
+      - name: rust + rzup
+        run: |
+          curl -L https://risczero.com/install | bash
+          echo "$HOME/.risc0/bin" >> $GITHUB_PATH
+          $HOME/.risc0/bin/rzup install cargo-risczero 3.0.5
+      - name: prove
+        env: 
+          RISC0_USE_DOCKER: "1"
+          SECRET_HEX: "${{ inputs.secret_hex }}"
+          TARGET_HEX: "${{ inputs.target_hex }}"
+          SELECTOR_HEX: "${{ inputs.selector_hex }}"
+        run: cd contracts/creator-badge && cargo run -p host --bin fixture --release
+      - uses: actions/upload-artifact@v4
+        with: 
+          name: fixture
+          path: contracts/creator-badge/out/
