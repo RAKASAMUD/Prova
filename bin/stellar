@@ -1,0 +1,2 @@
+#!/bin/bash
+/mnt/c/Users/hp5cd/.local/bin/stellar.exe "$@"
