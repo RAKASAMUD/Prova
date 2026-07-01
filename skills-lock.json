@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "assets": {
+      "source": "stellar/stellar-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/assets/SKILL.md",
+      "computedHash": "4d3a79758be22bbe47415085ec2306dace18e2e81709519b7c8ebd0d0b7717d2"
+    },
+    "data": {
+      "source": "stellar/stellar-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/data/SKILL.md",
+      "computedHash": "8e3be4428f57e20a84afc3a4c705814be17b75fa0a7decc039dca98046aa7fa6"
+    },
+    "smart-contracts": {
+      "source": "stellar/stellar-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/smart-contracts/SKILL.md",
+      "computedHash": "608b8eaa1f27cb898db7871aa442594a3e0abb0d3b3544a0fb7e59ee6b0b6423"
+    },
+    "soroban": {
+      "source": "stellar/stellar-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/soroban/SKILL.md",
+      "computedHash": "80c7bd3a3c89d4e3134603b2bf203de1a6ca8e011e966cecdd1651e1af4c0923"
+    },
+    "standards": {
+      "source": "stellar/stellar-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/standards/SKILL.md",
+      "computedHash": "5e00e5dc6adfbd2ca19b403a844fc951bd538447acfc0576c00d12f4cf6c89b4"
+    },
+    "zk-proofs": {
+      "source": "stellar/stellar-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/zk-proofs/SKILL.md",
+      "computedHash": "94d4b1ab099334627e838d12fba7fc512a3e3d44defecd08c0c68b449229be32"
+    }
+  }
+}
