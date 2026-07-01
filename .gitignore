@@ -1,0 +1,17 @@
+# Rust / Soroban
+target/
+.soroban/
+Cargo.lock
+
+# Web / Node
+node_modules/
+dist/
+build/
+.env
+
+# Hidden & IDE folders
+.claude/
+.agents/
+.vscode/
+.idea/
+.DS_Store
