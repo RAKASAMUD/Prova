@@ -20,19 +20,30 @@ jobs:
           submodules: recursive
       - name: swap 8G
         run: sudo fallocate -l 8G /swap2 && sudo chmod 600 /swap2 && sudo mkswap /swap2 && sudo swapon /swap2 && free -h
-      - name: install cargo-risczero
-        uses: cargo-bins/cargo-binstall-action@v3
-        with:
-          pkg: cargo-risczero@3.0.5
+      - name: install risc0 toolchain (rzup)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -L https://risczero.com/install | bash
+          echo "$HOME/.risc0/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.risc0/bin:$PATH"
+          rzup install rust
+          rzup install cargo-risczero 3.0.5
+          rzup install r0vm 3.0.5
+          rzup show
+      - name: sanity
+        run: |
+          export PATH="$HOME/.risc0/bin:$PATH"
+          rzup show
+          docker info | head -5
       - name: prove
         env: 
           RISC0_USE_DOCKER: "1"
           SECRET_HEX: "${{ inputs.secret_hex }}"
           TARGET_HEX: "${{ inputs.target_hex }}"
           SELECTOR_HEX: "${{ inputs.selector_hex }}"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cargo risczero toolchain install
+          export PATH="$HOME/.risc0/bin:$PATH"
           cd contracts/creator-badge
           cargo run -p host --bin fixture --release
       - uses: actions/upload-artifact@v4
