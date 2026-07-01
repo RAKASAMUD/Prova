@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { FaqItem } from '@/components/landing/FaqItem';
-
+import { Navbar } from '@/components/landing/Navbar';
+import { HeroText } from '@/components/landing/HeroText';
+import { HeroCTA } from '@/components/landing/HeroCTA';
+import { HeroTerminal } from '@/components/landing/HeroTerminal';
 export default function LandingPage() {
   return (
     <>
@@ -18,60 +21,15 @@ export default function LandingPage() {
   );
 }
 
-function Navbar() {
-  return (
-    <nav className="fixed top-0 w-full z-50 bg-neon border-b-2 border-line flex justify-between items-center px-4 py-3 md:py-2">
-      <div className="font-display text-3xl md:text-5xl font-bold text-ink tracking-tighter uppercase leading-none">
-        PROVA*
-      </div>
-      <div className="flex items-center gap-4 font-mono font-bold text-ink uppercase text-xs md:text-sm">
-        <a className="hover:bg-paper hover:text-neon px-2 py-1 transition-colors duration-0 border border-transparent hover:border-paper hidden md:block" href="#">GITHUB ↗</a>
-        <Link href="/demo" className="bg-ink text-paper px-4 py-2 border-2 border-ink hover:bg-paper hover:text-ink transition-colors duration-0 shadow-[4px_4px_0px_var(--ink)]">
-          SEE DEMO →
-        </Link>
-      </div>
-    </nav>
-  );
-}
-
 function Hero() {
   return (
     <section className="relative min-h-[85vh] flex flex-col md:flex-row items-center justify-center p-6 md:p-12 border-b-2 border-line z-10 pt-[100px]">
       <div className="absolute inset-0 bg-neon w-2/3 h-3/4 -z-10 mix-blend-screen opacity-10 hidden md:block" style={{top: '10%', left: '10%', transform: 'rotate(-2deg)'}}></div>
       <div className="flex-1 w-full max-w-5xl relative">
-        <div className="bg-surface text-neon font-mono font-bold inline-block px-4 py-2 mb-8 shadow-[6px_6px_0px_var(--neon)] uppercase text-sm md:text-base border-2 border-neon transform -rotate-1">
-          REAL-WORLD ZK · STELLAR
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-4 bg-neon z-0 hidden md:block transform rotate-1 shadow-[8px_8px_0px_var(--ink)] border-2 border-ink"></div>
-          <h1 className="font-display text-5xl md:text-[100px] font-bold tracking-tighter mb-8 leading-[0.9] text-paper relative z-10">
-            Prove you qualify.<br/>
-            <span className="text-ink bg-paper px-2 mt-2 inline-block shadow-[4px_4px_0px_var(--ink)] md:shadow-none border-2 border-ink md:border-transparent">Without ever</span><br/>
-            showing your diagnosis.
-          </h1>
-        </div>
-        <p className="font-sans text-xl md:text-2xl text-paper max-w-2xl mb-12 font-medium bg-surface/80 backdrop-blur inline-block p-2 border-l-4 border-neon">
-          Prova lets disabled creators prove a valid credential with a zero-knowledge proof — and mint a soulbound badge on Stellar.
-        </p>
-        <Link href="/demo">
-          <button className="bg-neon text-ink font-display text-2xl md:text-4xl font-bold px-8 py-4 uppercase border-4 border-ink shadow-[8px_8px_0px_var(--ink)] hover:translate-y-[4px] hover:translate-x-[4px] hover:shadow-[4px_4px_0px_var(--ink)] transition-all">
-            Start Proving
-          </button>
-        </Link>
+        <HeroText />
+        <HeroCTA />
       </div>
-      <div className="w-full md:w-80 mt-12 md:mt-0 bg-surface text-[#00FF41] p-6 border-4 border-neon shadow-[8px_8px_0px_var(--neon)] relative transform md:rotate-2 self-end md:self-auto">
-        <div className="font-mono font-bold text-white uppercase border-b-2 border-line pb-2 mb-4 flex justify-between items-center">
-          <span>§01 — INTRO</span>
-          <span className="w-3 h-3 bg-[#00FF41] rounded-full inline-block animate-pulse"></span>
-        </div>
-        <div className="font-mono text-sm leading-relaxed text-[#00FF41]">
-          &gt; init proof_generation<br/>
-          &gt; loading risc_zero_zkvm<br/>
-          <span className="text-white">&gt; verifying credential... [OK]</span><br/>
-          &gt; minting soulbound token<br/>
-          <span className="animate-pulse">_</span>
-        </div>
-      </div>
+      <HeroTerminal />
     </section>
   );
 }
