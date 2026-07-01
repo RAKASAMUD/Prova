@@ -1,5 +1,5 @@
 import * as StellarSdk from "@stellar/stellar-sdk";
-import { config } from "./config";
+import { config } from "@/lib/config";
 
 const rpc = new StellarSdk.rpc.Server(config.rpcUrl);
 

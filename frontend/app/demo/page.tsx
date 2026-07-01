@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { checkBadge, simulateReclaim } from "@/lib/prova";
+import { checkBadge, simulateReclaim } from "@/services/stellar";
 import { config } from "@/lib/config";
 
 export default function DemoPage() {
