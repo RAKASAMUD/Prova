@@ -1,13 +1,9 @@
 use risc0_zkvm::guest::env;
+use shared::build_journal;
 
 fn main() {
-    // TODO: Implement your guest code here
-
-    // read the input
-    let input: u32 = env::read();
-
-    // TODO: do something with the input
-
-    // write public output to the journal
-    env::commit(&input);
+    let secret: [u8; 32] = env::read();
+    let target: [u8; 32] = env::read();
+    let journal = build_journal(&secret, &target);
+    env::commit_slice(&journal); // raw bytes, TIDAK env::commit (hindari serde encoding)
 }
