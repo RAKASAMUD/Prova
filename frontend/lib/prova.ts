@@ -8,7 +8,7 @@ export async function checkBadge(address: string): Promise<boolean> {
   if (!address) throw new Error("Address not set");
 
   const tx = new StellarSdk.TransactionBuilder(
-    new StellarSdk.Account(config.contractId, "0"),
+    new StellarSdk.Account(address, "0"),
     { fee: "100", networkPassphrase: config.networkPassphrase }
   )
     .addOperation(
@@ -48,7 +48,7 @@ export async function simulateReclaim(): Promise<string> {
   const journalHex = config.reclaimJournalHex || "";
 
   const tx = new StellarSdk.TransactionBuilder(
-    new StellarSdk.Account(config.contractId, "0"),
+    new StellarSdk.Account(caller, "0"),
     { fee: "100", networkPassphrase: config.networkPassphrase }
   )
     .addOperation(
