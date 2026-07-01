@@ -31,11 +31,21 @@ jobs:
           rzup install cargo-risczero 3.0.5
           rzup install r0vm 3.0.5
           rzup show
-      - name: sanity
+      - name: DIAGNOSA (tempel output step ini)
+        env:
+          RISC0_USE_DOCKER: "1"
         run: |
           export PATH="$HOME/.risc0/bin:$PATH"
-          rzup show
-          docker info | head -5
+          echo "=== rzup show ==="
+          rzup show || echo "rzup TIDAK ada di PATH"
+          echo "=== toolchain dir ==="
+          ls -la ~/.rustup/toolchains/ 2>/dev/null || echo "no rustup toolchains"
+          ls -la ~/.risc0/ 2>/dev/null
+          ls -la ~/.risc0/toolchains/rust/bin/ 2>/dev/null || echo "no risc0 rust bin"
+          echo "=== docker ==="
+          docker info | head -3 || echo "docker MATI"
+          echo "=== env ==="
+          echo "RISC0_USE_DOCKER=$RISC0_USE_DOCKER"
       - name: prove
         env: 
           RISC0_USE_DOCKER: "1"
