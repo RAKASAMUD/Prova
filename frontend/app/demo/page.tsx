@@ -117,6 +117,9 @@ export default function DemoPage() {
                   placeholder="Enter Stellar address (G...)"
                 />
               </div>
+              <p className="mt-2 text-xs font-mono text-muted">
+                *Enter any Stellar account address (G...) to check if it holds a verified Prova soulbound badge on the testnet.
+              </p>
               <button 
                 onClick={handleVerify}
                 disabled={loading}
