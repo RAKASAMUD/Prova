@@ -1,14 +1,23 @@
 #![no_std]
+use sha2::{Sha256, Digest};
 pub const JOURNAL_LEN: usize = 97;
 
-// Placeholder for build_journal and sha256 so the test can compile (but will fail assertion or logic later, actually wait, the M1 step 1 wants to implement the failing test. I'll just write the test first as instructed, but in Rust the test won't compile without the function signature. Let's provide the signature.)
-
 pub fn sha256(input: &[u8]) -> [u8; 32] {
-    [0; 32] // dummy
+    let mut h = Sha256::new(); h.update(input); h.finalize().into()
 }
 
 pub fn build_journal(secret: &[u8; 32], target: &[u8; 32]) -> [u8; JOURNAL_LEN] {
-    [0; JOURNAL_LEN] // dummy
+    let commitment = sha256(secret);
+    let mut cat = [0u8; 64];
+    cat[..32].copy_from_slice(secret);
+    cat[32..].copy_from_slice(target);
+    let nullifier = sha256(&cat);
+    let mut j = [0u8; JOURNAL_LEN];
+    j[0] = 1;
+    j[1..33].copy_from_slice(&commitment);
+    j[33..65].copy_from_slice(&nullifier);
+    j[65..97].copy_from_slice(target);
+    j
 }
 
 #[cfg(test)]
