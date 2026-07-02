@@ -3,6 +3,11 @@ import { config } from "@/lib/config";
 
 const rpc = new StellarSdk.rpc.Server(config.rpcUrl);
 
+export const isValidStellarAddress = (s: string) =>
+  StellarSdk.StrKey.isValidEd25519PublicKey(s?.trim() ?? "");
+
+export class StellarNetworkError extends Error {}
+
 export async function checkBadge(address: string): Promise<boolean> {
   if (!config.contractId) throw new Error("Contract ID not set");
   if (!address) throw new Error("Address not set");
@@ -26,16 +31,26 @@ export async function checkBadge(address: string): Promise<boolean> {
     .setTimeout(30)
     .build();
 
-  const simulation = await rpc.simulateTransaction(tx);
-  if (StellarSdk.rpc.Api.isSimulationError(simulation)) {
-    throw new Error(typeof simulation.error === "string" ? simulation.error : JSON.stringify(simulation.error));
+  let simulation;
+  try {
+    simulation = await rpc.simulateTransaction(tx);
+  } catch (err: any) {
+    throw new StellarNetworkError(err?.message || "Failed to fetch from RPC");
   }
+
+  if (StellarSdk.rpc.Api.isSimulationError(simulation)) {
+    const errorMsg = typeof simulation.error === "string" ? simulation.error : JSON.stringify(simulation.error);
+    throw new StellarNetworkError(errorMsg);
+  }
+
   if (StellarSdk.rpc.Api.isSimulationSuccess(simulation)) {
     const result = (simulation as any).result?.retval;
     if (result) {
       return StellarSdk.scValToNative(result) as boolean;
     }
   }
+  
+  // If the contract didn't return a clear boolean value or missing retval
   return false;
 }
 
@@ -70,7 +85,13 @@ export async function simulateReclaim(): Promise<string> {
     .setTimeout(30)
     .build();
 
-  const simulation = await rpc.simulateTransaction(tx);
+  let simulation;
+  try {
+    simulation = await rpc.simulateTransaction(tx);
+  } catch (err: any) {
+    return err?.message || "Failed to fetch from RPC";
+  }
+
   if (StellarSdk.rpc.Api.isSimulationError(simulation)) {
     return typeof simulation.error === "string" ? simulation.error : JSON.stringify(simulation.error); 
   }
