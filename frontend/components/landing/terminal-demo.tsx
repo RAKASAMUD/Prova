@@ -22,6 +22,7 @@ export default function TerminalDemo() {
         }}
         typingSpeed={45}
         delayBetweenCommands={1000}
+        className="h-[320px]"
       />
     </section>
   );

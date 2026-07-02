@@ -84,7 +84,7 @@ export function FourChecks() {
               <h3 className="check-title font-display font-black text-4xl md:text-6xl tracking-[-0.04em] text-neon uppercase mb-8 whitespace-nowrap">
                 {check.title}
               </h3>
-              <p className="check-desc font-sans text-white text-lg md:text-2xl max-w-3xl leading-relaxed">
+              <p className="check-desc font-sans text-white text-lg md:text-2xl max-w-3xl leading-relaxed text-justify">
                 {check.desc}
               </p>
             </div>

@@ -10,17 +10,17 @@ export function HowItWorks() {
             <div className="bg-paper">
               <div className="font-mono font-bold text-6xl text-neon mb-6 relative bg-paper inline-block pr-4">01</div>
               <div className="font-mono font-bold text-ink uppercase mb-2">ISSUER REGISTERS</div>
-              <p className="font-sans text-ink/70 text-sm">A trusted issuer registers a hash of your credential on-chain. Your document never leaves you.</p>
+              <p className="font-sans text-ink/70 text-sm text-justify">A trusted issuer registers a hash of your credential on-chain. Your document never leaves you.</p>
             </div>
             <div className="bg-paper">
               <div className="font-mono font-bold text-6xl text-neon mb-6 relative bg-paper inline-block px-4">02</div>
               <div className="font-mono font-bold text-ink uppercase mb-2">YOU PROVE PRIVATELY</div>
-              <p className="font-sans text-ink/70 text-sm">Inside the RISC Zero zkVM, your device computes a commitment and nullifier. Your secret never leaves the machine.</p>
+              <p className="font-sans text-ink/70 text-sm text-justify">Inside the RISC Zero zkVM, your device computes a commitment and nullifier. Your secret never leaves the machine.</p>
             </div>
             <div className="bg-paper">
               <div className="font-mono font-bold text-6xl text-neon mb-6 relative bg-paper inline-block pl-4">03</div>
               <div className="font-mono font-bold text-ink uppercase mb-2">STELLAR VERIFIES &amp; MINTS</div>
-              <p className="font-sans text-ink/70 text-sm">The Soroban contract verifies the Groth16 proof and mints your soulbound badge.</p>
+              <p className="font-sans text-ink/70 text-sm text-justify">The Soroban contract verifies the Groth16 proof and mints your soulbound badge.</p>
             </div>
           </div>
         </div>
