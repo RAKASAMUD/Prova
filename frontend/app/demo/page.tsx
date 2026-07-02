@@ -7,6 +7,7 @@ import { config } from "@/lib/config";
 import { PrivateCard } from "@/components/demo/PrivateCard";
 import { Wall } from "@/components/demo/Wall";
 import { PublicPanel, DemoState } from "@/components/demo/PublicPanel";
+import { Particles } from "@/components/demo/Particles";
 
 export default function DemoPage() {
   const [targetAddr, setTargetAddr] = useState(config.sampleAddr || "");
@@ -58,7 +59,7 @@ export default function DemoPage() {
   return (
     <div className="bg-ink text-paper min-h-screen w-full flex flex-col font-sans antialiased">
       {/* Header */}
-      <header className="h-14 border-b-2 border-line flex justify-between items-center px-6 flex-shrink-0 z-50 bg-ink">
+      <header className="h-14 border-b-2 border-line flex justify-between items-center px-6 flex-shrink-0 z-50 bg-ink relative">
         <div className="font-display font-bold tracking-tighter text-xl">PROVA*</div>
         <Link href="/" className="font-mono text-xs uppercase text-muted hover:text-neon transition-colors flex items-center gap-2">
           ← BACK TO HOME
@@ -66,7 +67,9 @@ export default function DemoPage() {
       </header>
 
       {/* Main 3-Column Layout */}
-      <main className="flex-1 flex flex-col md:flex-row relative">
+      <main className="flex-1 flex flex-col md:flex-row relative z-10 overflow-hidden">
+        <Particles />
+        
         {/* LEFT ZONE ( PRIVATE ) */}
         <section className="w-full md:w-[45%] bg-paper border-b-2 md:border-b-0 md:border-r-2 border-line p-8 flex flex-col relative">
           <div className="font-mono text-muted-ink mb-12 flex items-center gap-2 font-bold uppercase">

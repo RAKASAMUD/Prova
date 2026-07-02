@@ -1,0 +1,57 @@
+/* Red particles stop at the wall (around 45vw) */
+@keyframes redParticleFloat {
+  0% {
+    transform: translate(-10vw, 10vh);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    /* Wall is roughly at 45% (md:w-[45%]) to 50% */
+    transform: translate(40vw, -20vh);
+    opacity: 0;
+  }
+}
+
+/* Violet particles cross the wall to the right */
+@keyframes violetParticleFloat {
+  0% {
+    transform: translate(-10vw, 20vh);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    /* Crosses to the right panel */
+    transform: translate(90vw, -30vh);
+    opacity: 0;
+  }
+}
+
+.particle {
+  opacity: 0;
+  left: 0;
+}
+
+.particle-red {
+  animation: redParticleFloat linear infinite;
+}
+
+.particle-violet {
+  animation: violetParticleFloat linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none !important;
+    display: none !important;
+  }
+}
