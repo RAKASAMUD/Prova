@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Prova — Prove eligibility, never the diagnosis",
   description:
     "Disabled creators prove a valid credential with a zero-knowledge proof and mint a soulbound badge on Stellar. The diagnosis never crosses the line.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
