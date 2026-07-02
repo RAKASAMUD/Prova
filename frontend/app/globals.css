@@ -56,6 +56,35 @@
     background-color: var(--neon);
     color: var(--ink);
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--neon);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: var(--surface);
+  }
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) var(--surface);
 }
 
 @keyframes marquee {
