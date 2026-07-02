@@ -1,37 +1,28 @@
-/* Red particles stop at the wall (around 45vw) */
-@keyframes redParticleFloat {
+/* All particles bounce off the wall (around 45vw) and go back */
+@keyframes particleBounceFloat {
   0% {
     transform: translate(-10vw, 10vh);
     opacity: 0;
   }
-  20% {
+  15% {
     opacity: 0.8;
   }
-  80% {
+  45% {
+    /* Hit the wall */
+    transform: translate(43vw, -10vh);
+    opacity: 0.8;
+  }
+  50% {
+    /* Bounce slightly */
+    transform: translate(41vw, -12vh);
+    opacity: 0.8;
+  }
+  85% {
     opacity: 0.8;
   }
   100% {
-    /* Wall is roughly at 45% (md:w-[45%]) to 50% */
-    transform: translate(40vw, -20vh);
-    opacity: 0;
-  }
-}
-
-/* Violet particles cross the wall to the right */
-@keyframes violetParticleFloat {
-  0% {
-    transform: translate(-10vw, 20vh);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.6;
-  }
-  80% {
-    opacity: 0.6;
-  }
-  100% {
-    /* Crosses to the right panel */
-    transform: translate(90vw, -30vh);
+    /* Return to left and fade out */
+    transform: translate(-10vw, -30vh);
     opacity: 0;
   }
 }
@@ -42,11 +33,12 @@
 }
 
 .particle-red {
-  animation: redParticleFloat linear infinite;
+  animation: particleBounceFloat linear infinite;
 }
 
 .particle-violet {
-  animation: violetParticleFloat linear infinite;
+  animation: particleBounceFloat linear infinite;
+  animation-direction: reverse; /* Just to add some variety if needed, or keep normal */
 }
 
 @media (prefers-reduced-motion: reduce) {
