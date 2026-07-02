@@ -18,8 +18,8 @@ export function HeroText() {
           showing your diagnosis.
         </h1>
       </div>
-      <p className="font-sans text-xl md:text-2xl text-paper max-w-2xl mb-12 font-medium bg-surface inline-block p-4 border-2 border-line">
-        Prova lets disabled creators prove a valid credential with a zero-knowledge proof — and mint a soulbound badge on Stellar.
+      <p className="font-sans text-xl md:text-2xl text-paper max-w-2xl mb-12 font-medium bg-surface inline-block p-4 border-2 border-line text-justify">
+        Prova lets disabled creators prove a valid credential with a zero-knowledge proof and mint a soulbound badge on Stellar.
       </p>
     </>
   );
