@@ -1,0 +1,8 @@
+export const RAW_JOURNAL_HEX = "0168db2bd3cbfe02d83c3877eb876d7fca0e4a944e523708dc561790060e6043b573674a5b99750f245b358acfa1d4f1bd81d69794b9b29db97499e7df9863b36549059d171474636b2b79a0cca89a4d329eb90d4c2fe550edc0db1301d39b05c1";
+
+export const FIXTURE = {
+  eligible: RAW_JOURNAL_HEX.substring(0, 2) === "01",
+  commitment: "0x" + RAW_JOURNAL_HEX.substring(2, 66),
+  nullifier: "0x" + RAW_JOURNAL_HEX.substring(66, 130),
+  target: "0x" + RAW_JOURNAL_HEX.substring(130, 194),
+};
