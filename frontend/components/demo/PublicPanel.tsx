@@ -38,7 +38,7 @@ export function PublicPanel({
       <div className="font-mono text-muted mb-12 flex items-center gap-2 font-bold uppercase">
         <span className="text-neon" aria-hidden="true"></span> PUBLIC
       </div>
-      <div className="flex-1 flex flex-col justify-center max-w-md w-full ml-0 md:ml-12">
+      <div className="flex-1 flex flex-col justify-center max-w-md w-full mx-auto md:ml-12 md:mr-8">
         {/* Verification Input */}
         <div className="mb-12">
           <div className="border-b-2 border-line pb-2 focus-within:border-neon transition-colors">
