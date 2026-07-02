@@ -7,7 +7,7 @@ export function ProtocolSection() {
       <ProtocolWithoutZK />
       <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-8 flex-col items-center justify-center z-30 pointer-events-none">
         <div className="h-full w-2 bg-neon border-x-2 border-ink"></div>
-        <div className="absolute bg-neon text-ink py-6 px-3 font-mono font-bold text-sm tracking-widest writing-vertical-rl border-4 border-ink shadow-[8px_8px_0px_var(--ink)] whitespace-nowrap uppercase">
+        <div className="absolute bg-neon text-ink py-6 px-3 font-mono font-bold text-sm tracking-widest writing-vertical-rl border-4 border-ink shadow-[8px_8px_0px_var(--ink)] whitespace-nowrap uppercase transform -translate-y-32">
           THE DIAGNOSIS NEVER CROSSES THIS LINE
         </div>
       </div>
