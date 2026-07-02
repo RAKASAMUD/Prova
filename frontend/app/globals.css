@@ -8,10 +8,13 @@
   --color-neon-hi: var(--neon-hi);
   --color-paper: var(--paper);
   --color-muted: var(--muted);
+  --color-muted-ink: var(--muted-ink);
   --color-red: var(--red);
-  
-  --font-display: var(--font-display), sans-serif;
-  --font-mono: var(--font-mono), monospace;
+  --color-red-deep: var(--red-deep);
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 @layer base {
@@ -19,16 +22,57 @@
     --ink: #0A0A0F;
     --surface: #17171F;
     --line: #2A2A36;
-    --neon: #9B4DFF;
+    /* AA on --ink and --surface for normal text (>=4.5:1 both directions vs ink) */
+    --neon: #A55FFF;
     --neon-hi: #C77DFF;
     --paper: #F4F4EE;
-    --muted: #6A6A78;
+    /* muted for dark surfaces (>=4.5:1 on --surface), muted-ink for light surfaces */
+    --muted: #94949F;
+    --muted-ink: #55555F;
+    /* red for dark surfaces only; red-deep passes AA on --paper/white */
     --red: #FF3B6B;
+    --red-deep: #C4002F;
   }
-  
-  html, body {
+
+  html,
+  body {
     background-color: var(--ink);
     color: var(--paper);
     margin: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--neon-hi);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--neon);
+    color: var(--ink);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

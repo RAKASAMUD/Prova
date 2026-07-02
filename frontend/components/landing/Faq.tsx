@@ -12,8 +12,8 @@ export function Faq() {
   return (
     <section className="p-8 md:p-16 bg-surface border-t-2 border-line relative z-10">
       <div className="max-w-[1600px] mx-auto">
-        <div className="font-mono font-bold text-neon uppercase mb-8 border-b-2 border-line inline-block pb-1 text-xl">§05 — HONESTY</div>
-        <h2 className="font-display text-4xl md:text-6xl mb-12 text-paper uppercase tracking-tighter">Questions worth asking.</h2>
+        <div className="font-mono font-bold text-neon uppercase mb-8 border-b-2 border-line inline-block pb-1 text-xl">05 — HONESTY</div>
+        <h2 className="font-display font-black text-4xl md:text-6xl mb-12 text-paper uppercase tracking-[-0.04em]">Questions worth asking.</h2>
         <div className="border-t border-line">
           {faqs.map((f, i) => (
             <FaqItem key={i} q={f.q} a={f.a} />

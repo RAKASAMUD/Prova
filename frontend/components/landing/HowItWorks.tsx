@@ -2,8 +2,8 @@ export function HowItWorks() {
   return (
     <section className="p-8 md:p-16 bg-paper border-t-2 border-line relative z-10">
       <div className="max-w-[1600px] mx-auto">
-        <div className="font-mono font-bold text-ink uppercase mb-8 border-b-2 border-line inline-block pb-1 text-xl">§04 — FLOW</div>
-        <h2 className="font-display text-4xl md:text-6xl mb-16 text-ink uppercase tracking-tighter">How it works.</h2>
+        <div className="font-mono font-bold text-ink uppercase mb-8 border-b-2 border-line inline-block pb-1 text-xl">04 — FLOW</div>
+        <h2 className="font-display font-black text-4xl md:text-6xl mb-16 text-ink uppercase tracking-[-0.04em]">How it works.</h2>
         <div className="relative">
           <div className="absolute top-12 left-0 w-full h-px bg-line hidden md:block"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
