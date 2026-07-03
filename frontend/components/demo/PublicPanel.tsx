@@ -4,6 +4,7 @@ import { NoBadgeCard } from "./results/NoBadgeCard";
 import { InvalidCard } from "./results/InvalidCard";
 import { NetworkErrorCard } from "./results/NetworkErrorCard";
 import { RejectedCard } from "./results/RejectedCard";
+import { config } from "@/lib/config";
 
 export type DemoState =
   | { kind: "idle" }
@@ -32,6 +33,7 @@ export function PublicPanel({
   loadingRevert,
 }: PublicPanelProps) {
   const isChecking = state.kind === "checking";
+  const [isCustom, setIsCustom] = useState(false);
 
   return (
     <section className="w-full md:w-[45%] p-8 flex flex-col relative bg-ink text-paper min-h-[600px]">
@@ -41,22 +43,59 @@ export function PublicPanel({
       <div className="flex-1 flex flex-col justify-center align-left max-w-md w-full mx-auto md:ml-12 md:mr-8 px-10">
         {/* Verification Input */}
         <div className="mb-12">
-          <div className="border-b-2 border-line pb-2 focus-within:border-neon transition-colors">
-            <label htmlFor="target-address" className="block font-mono text-xs font-bold text-muted mb-2 uppercase">
-              Target Address
+          <div className="border-b-2 border-line pb-2 mb-6 focus-within:border-neon transition-colors">
+            <label htmlFor="address-picker" className="block font-mono text-xs font-bold text-muted mb-2 uppercase">
+              Select Address Type
             </label>
-            <input
-              id="target-address"
-              className="w-full bg-transparent border-none outline-none font-mono text-paper p-0"
-              type="text"
-              value={targetAddr}
-              onChange={(e) => setTargetAddr(e.target.value)}
-              placeholder="Enter Stellar address (G...)"
-            />
+            <select
+              id="address-picker"
+              className="w-full bg-transparent border-none outline-none font-mono text-paper p-0 cursor-pointer appearance-none"
+              value={isCustom ? "custom" : "sample"}
+              onChange={(e) => {
+                if (e.target.value === "sample") {
+                  setIsCustom(false);
+                  setTargetAddr(config.sampleAddr || "");
+                } else {
+                  setIsCustom(true);
+                  setTargetAddr("");
+                }
+              }}
+            >
+              <option value="sample" className="bg-ink text-paper">Pre-filled Sample Address</option>
+              <option value="custom" className="bg-ink text-paper">Custom (Type your own)</option>
+            </select>
           </div>
-          <p className="mt-2 text-xs font-mono text-muted">
-            *Pre-filled with a creator who claimed via a real Groth16 proof.
-          </p>
+
+          {isCustom ? (
+            <div className="border-b-2 border-line pb-2 focus-within:border-neon transition-colors animate-in fade-in slide-in-from-top-2">
+              <label htmlFor="target-address" className="block font-mono text-xs font-bold text-muted mb-2 uppercase">
+                Enter Custom Address
+              </label>
+              <input
+                id="target-address"
+                className="w-full bg-transparent border-none outline-none font-mono text-paper p-0"
+                type="text"
+                value={targetAddr}
+                onChange={(e) => setTargetAddr(e.target.value)}
+                placeholder="Enter Stellar address (G...)"
+              />
+            </div>
+          ) : (
+            <div className="border-b-2 border-line pb-2 opacity-70">
+              <label className="block font-mono text-xs font-bold text-muted mb-2 uppercase">
+                Target Address
+              </label>
+              <div className="font-mono text-paper truncate" title={targetAddr}>
+                {targetAddr || "No sample address configured"}
+              </div>
+            </div>
+          )}
+
+          {!isCustom && (
+            <p className="mt-2 text-xs font-mono text-muted">
+              *Pre-filled with a creator who claimed via a real Groth16 proof.
+            </p>
+          )}
           <button
             onClick={onVerify}
             disabled={isChecking}
