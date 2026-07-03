@@ -4,7 +4,7 @@ export function ProtocolWithoutZK() {
       <div className="relative z-10 h-full flex flex-col justify-start">
         <div>
           <div className="font-mono font-bold text-ink uppercase mb-8 border-b-4 border-ink inline-block pb-1 text-xl bg-paper px-2">02 — PROTOCOL</div>
-          <h2 className="font-display font-black text-6xl md:text-8xl leading-none md:leading-none mb-12 lg:mb-24 text-red-deep uppercase tracking-[-0.04em] break-words">WITHOUT<br/>ZK</h2>
+          <h2 className="font-display font-black text-6xl md:text-7xl leading-none md:leading-none mb-12 lg:mb-24 text-red-deep uppercase tracking-[-0.04em] break-words">WITHOUT<br/>ZK</h2>
         </div>
         <div className="border-2 border-ink bg-paper shadow-[12px_12px_0px_var(--ink)] relative z-20 max-w-lg transform -rotate-1 group-hover:rotate-0 transition-transform">
           <div className="bg-paper p-6 m-2 border-2 border-ink relative">

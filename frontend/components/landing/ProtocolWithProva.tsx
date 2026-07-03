@@ -9,7 +9,7 @@ export function ProtocolWithProva() {
           <div className="flex justify-end mb-8">
             <div className="font-mono font-bold text-ink bg-neon uppercase px-3 py-1 border-2 border-ink shadow-[4px_4px_0px_var(--neon)] text-xl">SECURE STATE</div>
           </div>
-          <h2 className="font-display font-black text-6xl md:text-8xl leading-none md:leading-none mb-12 lg:mb-24 text-white uppercase tracking-[-0.04em] text-right break-words">WITH<br/><span className="text-neon">PROVA</span></h2>
+          <h2 className="font-display font-black text-6xl md:text-7xl leading-none md:leading-none mb-12 lg:mb-24 text-white uppercase tracking-[-0.04em] text-right break-words">WITH<br/><span className="text-neon">PROVA</span></h2>
         </div>
         <div className="border-4 border-neon bg-ink p-6 relative shadow-[12px_12px_0px_var(--neon)] self-end max-w-lg w-full transform rotate-1 hover:rotate-0 transition-transform">
           <div className="absolute -top-6 -right-6 bg-neon border-4 border-ink rounded-full p-2 w-16 h-16 flex items-center justify-center shadow-[4px_4px_0px_var(--ink)]">
