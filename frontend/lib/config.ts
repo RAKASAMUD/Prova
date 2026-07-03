@@ -1,11 +1,11 @@
 export const config = {
-  contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || "",
+  contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || "CBEQLHIXCR2GG2ZLPGQMZKE2JUZJ5OINJQX6KUHNYDNRGAOTTMC4DZBQ",
   rpcUrl: process.env.NEXT_PUBLIC_RPC_URL || "https://soroban-testnet.stellar.org:443",
   networkPassphrase: process.env.NEXT_PUBLIC_NETWORK_PASSPHRASE || "Test SDF Network ; September 2015",
-  sampleAddr: process.env.NEXT_PUBLIC_SAMPLE_ADDR || "",
+  sampleAddr: process.env.NEXT_PUBLIC_SAMPLE_ADDR || "GDWG5G5IWFIFESNPFH3LFDNHO2RZUGUUMWGZVEN2YCNYOCT6HBXQEDAF",
   
   // Simulation mock data for double-claim
-  reclaimCaller: process.env.NEXT_PUBLIC_RECLAIM_CALLER || "",
-  reclaimSealHex: process.env.NEXT_PUBLIC_RECLAIM_SEAL_HEX || "",
-  reclaimJournalHex: process.env.NEXT_PUBLIC_RECLAIM_JOURNAL_HEX || "",
+  reclaimCaller: process.env.NEXT_PUBLIC_RECLAIM_CALLER || "GDWG5G5IWFIFESNPFH3LFDNHO2RZUGUUMWGZVEN2YCNYOCT6HBXQEDAF",
+  reclaimSealHex: process.env.NEXT_PUBLIC_RECLAIM_SEAL_HEX || "00000000257e9ceb389e7f9ccd302303a72270d4fe7615f6fd3a5b903c2b959e2e6906b1",
+  reclaimJournalHex: process.env.NEXT_PUBLIC_RECLAIM_JOURNAL_HEX || "014bb06f8e4e3a7715d201d573d0aa423762e55dabd61a2c02278fa56cc6d294e008080808080808080808080808080808080808080808080808080808080808086ff7333ff19e1f043f8ff7b03ada62cad90b9cd4af911d72f148d14787e7fefd",
 };
